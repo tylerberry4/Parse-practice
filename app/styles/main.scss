@@ -3,24 +3,35 @@
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 
 // Custom Styles
+
 body {
-  background: #fafafa;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333;
+  background-color: #A7DBD8;
 }
 
-.hero-unit {
-  margin: 50px auto 0 auto;
-  width: 600px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  background-color: #eee;
-  border-radius: 6px;
-  padding: 60px;
+.title {
   h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+    font-size: 5em;
+    text-align: center;
+    color: white;
+  }
+}
+
+div {
+  text-align: center;
+}
+
+.logOutBtn {
+  width: 200px;
+  height: 100px;
+  margin: auto;
+  border: solid black 2px;
+  background-color: #F38630;
+  a {
+    text-decoration: none;
+    font-size: 2em;
+    position: relative;
+    top: 28%;
+    color: white;
+    padding: 30px 44px;
   }
 }

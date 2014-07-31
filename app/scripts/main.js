@@ -3,10 +3,11 @@
 
 $(function() {
 
+	//Sets up a query(search) of our Parse database
   Parse.$ = jQuery;
 
-  // Initialize Parse with your Parse application javascript keys
-Parse.initialize("aKBJPjju513rs9dxsevlKAFi6Ckva8gJN9IAsRmm", "eUIS7bf7VkcxIDiXHEp9dS8TNOwBNWdh2xdZ3HFL");
+  // Initialize Parse with the generated keys
+	Parse.initialize("aKBJPjju513rs9dxsevlKAFi6Ckva8gJN9IAsRmm", "eUIS7bf7VkcxIDiXHEp9dS8TNOwBNWdh2xdZ3HFL");
 
 
   // Create Model
@@ -51,11 +52,13 @@ Parse.initialize("aKBJPjju513rs9dxsevlKAFi6Ckva8gJN9IAsRmm", "eUIS7bf7VkcxIDiXHE
 
     el: ".content",
     
+    //binding the functions together
     initialize: function() {
       _.bindAll(this, "logIn", "signUp");
       this.render();
     },
 
+    //saving the values of the login info
     logIn: function(e) {
       var self = this;
       var username = this.$("#login-username").val();
@@ -68,6 +71,7 @@ Parse.initialize("aKBJPjju513rs9dxsevlKAFi6Ckva8gJN9IAsRmm", "eUIS7bf7VkcxIDiXHE
           delete self;
         },
 
+        //error message to show if login info is incorrect
         error: function(user, error) {
           self.$(".login-form .error").html("Invalid username or password. Please try again.").show();
           self.$(".login-form button").removeAttr("disabled");
@@ -79,23 +83,11 @@ Parse.initialize("aKBJPjju513rs9dxsevlKAFi6Ckva8gJN9IAsRmm", "eUIS7bf7VkcxIDiXHE
       return false;
     },
 
+    //save input value of new user info
     signUp: function(e) {
       var self = this;
       var username = this.$("#signup-username").val();
       var password = this.$("#signup-password").val();
-      
-      Parse.User.signUp(username, password, { ACL: new Parse.ACL() }, {
-        success: function(user) {
-          new ManageTodosView();
-          self.undelegateEvents();
-          delete self;
-        },
-
-        error: function(user, error) {
-          self.$(".signup-form .error").html(error.message).show();
-          self.$(".signup-form button").removeAttr("disabled");
-        }
-      });
 
       this.$(".signup-form button").attr("disabled", "disabled");
 
